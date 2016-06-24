@@ -844,6 +844,14 @@ public class Parser implements TerminalTokens, ParserBasicInformation, Conflicte
 		} catch (IOException e) {
 			result = name;
 			return result;
+		} finally {
+			if (is != null) {
+				try {
+					is.close();
+				} catch (IOException e) {
+					// ignore
+				}
+			}
 		}
 		for (int i = 0; i < NT_OFFSET + 1; i++) {
 			result[i] = name[i];
